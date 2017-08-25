@@ -1,0 +1,92 @@
+package [daoPackage].[lowerCaseBeanName];
+
+import java.util.List;
+
+import com.donnie.bean.[beanName];
+import com.donnie.bean.RequestParams;
+
+/***
+ * <b>类名称：</b>I[beanName]Mapper<br/>
+ * <b>类描述：</b>I[beanName]Mapper<br/>
+ * <b>创建人：</b>[author]<br/>
+ * <b>修改人：</b>[author]<br/>
+ * <b>修改时间：</b>2016年3月24日 下午4:25:51<br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0
+ *
+ */
+public interface I[beanName]Mapper {
+    
+	/***
+	 * 描述：(查找[description])
+	 * 方法名：find[beanName]s
+	 * 创建人：[author] 时间：[date] 
+	 * [daoPackage].[beanName]
+	 * @param requestParams
+	 * @return List<[beanName]>
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	public List<[beanName]> find[beanName]s(RequestParams requestParams);
+    
+    /***
+	 * 描述：(求总数)
+	 * [daoPackage].[lowerCaseBeanName]
+	 * 方法名：count
+	 * 创建人：Donnie 时间：[date] 
+	 * @param requestParams
+	 * @return int
+	 * @exception 
+	 * @since  1.0.0
+	 */
+    public int count(RequestParams requestParams);
+    
+    /***
+	 * 描述：(查找单个[description])
+	 * [daoPackage].[lowerCaseBeanName]
+	 * 方法名：get[beanName]
+	 * 创建人：Donnie 时间：[date] 
+	 * @param id
+	 * @return [beanName]
+	 * @exception 
+	 * @since  1.0.0
+	 */
+    public [beanName] get(Integer id);
+    
+	/***
+     * 描述：(保存[description])
+     * 方法名：save
+     * 创建人：[author] 时间：2016年4月10日-下午7:28:08 
+     * [daoPackage].[beanName]
+     * @param [lowerCaseBeanName]
+     * @return Content
+     * @exception 
+     * @since  1.0.0
+     */
+	public int save([beanName] [lowerCaseBeanName]);
+    
+	/***
+     * 描述：(保存[description])
+     * 方法名：update
+     * 创建人：[author] 时间：2016年4月10日-下午7:28:14 
+     * [daoPackage].[beanName]
+     * @param [lowerCaseBeanName]
+     * @return [beanName]
+     * @exception 
+     * @since  1.0.0
+     */
+	public int update([beanName] [lowerCaseBeanName]);
+
+	/***
+     * 描述：(删除[description])
+     * 方法名：delete
+     * 创建人：[author] 时间：2016年4月10日-下午7:28:20 
+     * [daoPackage].[beanName]
+     * @param [lowerCaseBeanName]
+     * @return [beanName]
+     * @exception 
+     * @since  1.0.0
+     */
+	public int delete([beanName] [lowerCaseBeanName]);
+	
+}

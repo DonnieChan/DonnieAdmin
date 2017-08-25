@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring" xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+			http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+	<!-- <context:property-placeholder location="classpath:db/db.properties" />  -->
+
+	<!-- proxy,c3p0,dbcp,druid，都是为了解决数据库连接的问题，建立一个连接的池塘，这个池塘里面有很多的连接对象供 hibernate,mybatis,springjdbcTemplate获取 -->
+
+	<!-- 扫描dao包 -->
+	<context:component-scan base-package="com.donnie.dao"></context:component-scan>
+
+	<!-- 扫描service包 -->
+	<context:component-scan base-package="com.donnie.service"></context:component-scan>
+    
+      <!-- 引入数据库的db资源文件 -->
+	<bean class="com.donnie.core.des.EncryptPropertyPlaceholderConfigurer" 
+		p:location="classpath:db/db.properties" p:fileEncoding="UTF-8" />
+    
+    	<!-- 这里是属性文件的配置顺序，key - value形式 -->
+	<!-- 
+		db.url=jdbc:mysql://localhost:3306/ulewo
+		db.driver=com.mysql.jdbc.Driver
+		db.username=M3s6kClNm2Y=
+		db.password=XYJPat9FFo8=
+	 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">  
+        <property name="url" value="${db.url}" />  
+        <property name="username" value="${db.username}" />  
+        <property name="driverClassName" value="${db.driverClassName}" />
+        <property name="password" value="${db.password}" />  
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize">
+			<value>1</value>
+		</property>
+		<property name="maxActive">
+			<value>5</value>
+		</property>
+		<property name="minIdle">
+			<value>1</value>
+		</property>
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait">
+			<value>60000</value>
+		</property>
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters">
+			<value>stat</value>
+		</property>
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis">
+			<value>60000</value>
+		</property>
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis">
+			<value>300000</value>
+		</property>
+	</bean>
+    
+   	<!-- mybatis配置 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- 映射所有的sql对应的模块的xml文件 -->
+        <property name="mapperLocations" value="classpath:com/donnie/dao/*/*.xml"></property>
+        <!-- 注册mybatis bean别名 -->
+        <property name="typeAliasesPackage" value="com.donnie.bean"></property>
+        <!-- 加载mybatis住配置文件 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+    </bean> 
+
+        <!--初始化mybatis的模板 ，如果使用mapper就可以不需要使用模板，和下面的二选一-->
+<!-- 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"> -->
+<!-- 		<constructor-arg ref="sqlSessionFactory" /> -->
+<!-- 	</bean>  -->
+
+<!-- 	mybatis的mapper转换器 也就是说的接口，里面原理是采用的jdk的动态代理实现的-->
+  	 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
+  		<property name="basePackage" value="com.donnie.dao"></property> 
+  	 </bean>
+  	  
+ 	<!-- 该包下的类支持注解，表示会被当作{@code mybatis mapper}处理 配置了之后表示可以自动引入mapper类-->
+     <!-- <mybatis:scan base-package="com.tz.dao"/> -->
+
+</beans>

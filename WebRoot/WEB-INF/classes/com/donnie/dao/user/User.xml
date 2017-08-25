@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.donnie.dao.user.IUserMapper" >
+	<select id="getLogin" resultType="User" parameterType="RequestParams">
+		SELECT
+			id,
+			username,
+			account
+		FROM
+			tz_user
+		WHERE account =#{account} AND passWord =#{passWord} AND is_delete = 0 		
+	</select>
+</mapper>
+

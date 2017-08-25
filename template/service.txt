@@ -1,0 +1,77 @@
+package [servicePackage].[lowerCaseBeanName];
+
+import java.util.List;
+
+import com.donnie.bean.[beanName];
+import com.donnie.bean.RequestParams;
+
+public interface I[beanName]Service {
+    
+	/***
+	 * 描述：(查找[description])
+	 * 方法名：find[beanName]s
+	 * 创建人：Donnie 时间：[date] 
+	 * @param requestParams
+	 * @return List<[beanName]>
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	public List<[beanName]> find[beanName]s(RequestParams requestParams);
+    
+    /***
+	 * 描述：(求总数)
+	 * [daoPackage].[lowerCaseBeanName]
+	 * 方法名：count
+	 * 创建人：Donnie 时间：[date] 
+	 * @param requestParams
+	 * @return int
+	 * @exception 
+	 * @since  1.0.0
+	 */
+    public int count(RequestParams requestParams);
+    
+    /***
+	 * 描述：(查找[description])
+	 * 方法名：get
+	 * 创建人：Donnie 时间：[date] 
+	 * @param requestParams
+	 * @return List<[beanName]>
+	 * @exception 
+	 * @since  1.0.0
+	 */
+    public [beanName] get(Integer id);
+    
+	/***
+     * 描述：(保存[description])
+     * 方法名：save[beanName]s
+     * 创建人：Donnie 时间：[date] 
+     * @param [lowerCaseBeanName]
+     * @return [beanName]
+     * @exception 
+     * @since  1.0.0
+     */
+	public int save([beanName] [lowerCaseBeanName]);
+    
+	/***
+     * 描述：(保存[description])
+     * 方法名：update[beanName]s
+     * 创建人：Donnie 时间：[date] 
+     * @param [lowerCaseBeanName]
+     * @return [beanName]
+     * @exception 
+     * @since  1.0.0
+     */
+	public int update([beanName] [lowerCaseBeanName]);
+
+	/***
+     * 描述：(删除[description])
+     * 方法名：delete[beanName]s
+     * 创建人：Donnie 时间：[date] 
+     * @param [lowerCaseBeanName]
+     * @return [beanName]
+     * @exception 
+     * @since  1.0.0
+     */
+	public int delete([beanName] [lowerCaseBeanName]);
+	
+}

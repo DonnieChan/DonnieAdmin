@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.donnie.dao.user.IAdminUserMapper" >
+<!-- 方式一 -->
+<!-- 	
+		<cache></cache> 
+		映射语句文件中的所有 select 语句将会被缓存。 
+		映射语句文件中的所有 insert,update 和 delete 语句会刷新缓存。 
+		缓存会使用 Least Recently Used(LRU,最近最少使用的)算法来收回。 
+		根据时间表(比如 no Flush Interval,没有刷新间隔), 缓存不会以任何时间顺序 来刷新。 
+		缓存会存储列表集合或对象(无论查询方法返回什么)的 1024 个引用。 
+		缓存会被视为是 read/write(可读/可写)的缓存,意味着对象检索不是共享的,而且可以安全地被调用者修改,而不干扰其他调用者或线程所做的潜在修改。 
+		所有的这些属性都可以通过缓存元素的属性来修改。比如: 
+		
+		<cache
+		  eviction="FIFO"
+		  flushInterval="60000"
+		  size="512"
+		  readOnly="true"/>这个更高级的配置创建了一个 FIFO 缓存,并每隔 60 秒刷新,存数结果对象或列表的 512 个引用,而且返回的对象被认为是只读的,因此在不同线程中的调用者之间修改它们会导致冲突。 
+		
+		可用的收回策略有: 
+		
+		LRU – 最近最少使用的:移除最长时间不被使用的对象。 
+		FIFO – 先进先出:按对象进入缓存的顺序来移除它们。 
+		SOFT – 软引用:移除基于垃圾回收器状态和软引用规则的对象。 
+		WEAK – 弱引用:更积极地移除基于垃圾收集器状态和弱引用规则的对象。 
+		默认的是 LRU。
+		
+		flushInterval(刷新间隔)可以被设置为任意的正整数,而且它们代表一个合理的毫秒形式的时间段。默认情况是不设置,也就是没有刷新间隔,缓存仅仅调用语句(delete update insert)时刷新。 
+		size(引用数目)可以被设置为任意正整数,要记住你缓存的对象数目和你运行环境的可用内存资源数目。默认值是 1024。 
+		readOnly(只读)属性可以被设置为 true 或 false。只读的缓存会给所有调用者返回缓存对象的相同实例。因此这些对象不能被修改。这提供了很重要的性能优势。可读写的缓存会返回缓存对象的拷贝(通过序列化) 。这会慢一些,但是安全,因此默认是 false。 
+
+	-->
+	<!-- <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/> -->
+	
+	<!-- 方式二
+	
+    	定义缓存策略 继承第三方的：echcache (oscache)
+    	echcache-core.jar
+    	mybatis-cache.jar
+		eternal="false"   				// 元素是否永恒,如果是就永不过期(必须设置)
+	  	maxEntriesLocalHeap="1000" 		// 堆内存中最大缓存对象数,0没有限制(必须设置)
+	  	overflowToDisk="false"  		// 当缓存达到maxElementsInMemory值是,是否允许溢出到磁盘(必须设置)
+	  	diskPersistent="false"  		// 磁盘缓存在VM重新启动时是否保持(默认为false)
+	  	timeToIdleSeconds="0" 			// 导致元素过期的访问间隔(秒为单位). 当eternal为false时，这个属性才有效，0表示可以永远空闲,默认为0
+	  	timeToLiveSeconds="600" 		// 元素在缓存里存在的时间(秒为单位). 0 表示永远存在不过期
+	  	memoryStoreEvictionPolicy="LFU" // 当达到maxElementsInMemory时,如何强制进行驱逐默认使用"最近使用(LRU)"策略,其它还有先入先出FIFO,最少使用LFU,较少使用LRU
+	  	
+	 -->
+<!--  	<cache type="org.mybatis.caches.ehcache.LoggingEhcache" >   -->
+<!--          <property name="timeToIdleSeconds" value="3600"/>单位是秒 -->
+<!--          <property name="timeToLiveSeconds" value="3600"/>单位是秒 -->
+<!--          <property name="maxEntriesLocalHeap" value="1000"/>  -->
+<!--          <property name="maxEntriesLocalDisk" value="10000000"/>  -->
+<!--          <property name="memoryStoreEvictionPolicy" value="LRU"/>  -->
+<!--      </cache>  -->
+
+	<!-- 	
+		缓存只能缓存java中基础数据类型和对象
+		如果你缓存对象话必须要实现一个java.io.Serializable 序列化-进制流-存储在内存中
+		获取的过程中有可以通过反序列得到对象
+		ehcache-2.8.3.jar
+		mybatis-ehcache-1.0.0.jar
+		slf4j-api-1.7.6.jar
+		
+		第二步：在classpath(src)目录下ehcache.xml
+		
+		1:什么样子的数据才适合于缓存
+		2:缓存原理是什么
+	-->
+	
+	
+	<!-- 管理员单人登录 -->
+	<select id="getLogin" resultType="AdminUser" parameterType="RequestParams"> 
+		SELECT
+			id,
+			username,
+			email,
+			forbiden
+		FROM
+			keke_admin_user
+		WHERE email = #{account} AND password = #{password} AND is_delete = 0 		
+	</select>
+	
+	
+	<!-- 
+	    批量增加记录
+	 -->
+	<insert id="saveBatch" useGeneratedKeys="true" parameterType="java.util.List">
+	<!-- 
+	      如果一个表的id不是自增长的，可使用以下的配置，模拟自增长的形式为每条记录以自增长id的形式添加id
+	     原理：找到每一次添加的记录的id，然后加1，然后将加1后的id作为下一条记录的id，以此类推
+
+      <selectKey resultType="int" keyProperty="id" order="AFTER">
+	     select LAST_INSERT_ID()
+	  </selectKey>
+	 -->
+	  insert into keke_admin_user(username,password) values
+	  
+	  <!-- 
+	     collection: 当前循环的集合类型
+	     index: 索引
+	     item: 集合中的每一个元素
+	     separator: 分隔符
+	  --> 
+	  <foreach collection="list" index="index" item="user" separator=",">
+	  <!--
+	           这里面相当于在做for循环
+	     for(int i=0; i<list.size(); i++){
+	      
+	      }
+	   
+	     insert into keke_admin_user(username,password) values
+	    ('vicky','ICy5YqxZB1uWSwcVLSNLcA=='),   //bean map 一个bean对应一个map
+	    ('bobby','ICy5YqxZB1uWSwcVLSNLcA==');   //bean map 一个bean对应一个map
+	    多条记录返回则用List封装起来
+	   -->
+	     (#{user.username},#{user.password})
+	  </foreach>
+	</insert>
+    
+    
+    <!-- 
+             批量更新
+     -->
+    <update id="batchUpdate" parameterType="java.util.List">
+     <!-- 
+         collection: 当前循环的集合类型
+	     index: 索引
+	     item: 集合中的每一个元素
+	     separator: 分隔符
+      -->
+       <foreach collection="list" index="index" item="user" separator=";">
+          Update keke_admin_user
+          <set>
+            forbidden = #{user.forbiden}
+          </set>
+            where id = #{user.id}
+       </foreach>
+    </update>
+    
+    
+    <!-- 
+              批量查找
+      resultType：返回的类型是集合中的元素的类型，此处不要被 List<AdminUser>迷惑
+     -->
+     <select id="queryBatch" parameterType="java.util.List" resultType="AdminUser">
+       select * from keke_admin_user where id in 
+        <!-- 
+         collection: 当前循环的集合类型
+	     index: 索引
+	     item: 集合中的每一个元素
+	     separator: 分隔符
+      -->
+       <foreach collection="list" item = "id" open="(" close=")" separator=",">
+          #{id}
+       </foreach>
+     </select>
+     
+</mapper>

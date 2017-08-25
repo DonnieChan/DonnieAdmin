@@ -1,0 +1,71 @@
+package [webPackage].[lowerCaseBeanName];
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.donnie.bean.[beanName];
+import com.donnie.bean.RequestParams;
+import [servicePackage].[lowerCaseBeanName].I[beanName]Service;
+
+/***
+ * 
+ * <b>类名称：</b>[beanName]Controller<br/>
+ * <b>类描述：</b>[beanName]Controller类<br/>
+ * <b>创建人：</b>donnie<br/>
+ * <b>修改人：</b>donnie<br/>
+ * <b>修改时间：</b>2016年4月14日 上午1:05:33<br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0
+ *
+ */
+@Controller
+@RequestMapping("/admin/[lowerCaseBeanName]")
+public class [beanName]Controller {
+    
+	@Autowired
+	I[beanName]Service [lowerCaseBeanName]Service;
+	
+	/***
+	 * 描述：(列表查询)
+	 * [daoPackage].[lowerCaseBeanName]
+	 * 方法名：count
+	 * 创建人：Donnie 时间：[date] 
+	 * @param requestParams
+	 * @return int
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	@RequestMapping("/list")
+	public String list(RequestParams requestParams){
+		return "[lowerCaseBeanName]/list";
+	}
+	
+	/***
+	 * 描述：(获取模版页面)
+	 * [daoPackage].[lowerCaseBeanName]
+	 * 方法名：count
+	 * 创建人：Donnie 时间：[date] 
+	 * @param requestParams
+	 * @return int
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	@RequestMapping("/template")
+	public ModelAndView template(RequestParams requestParams){
+		ModelAndView modelAndView = new ModelAndView();
+		//查询内容记录
+		List<[beanName]> [lowerCaseBeanName]s = [lowerCaseBeanName]Service.find[beanName]s(requestParams);
+		//查询内容记录总数
+		int count = [lowerCaseBeanName]Service.count(requestParams);
+		modelAndView.setViewName("[lowerCaseBeanName]/template");
+		modelAndView.addObject("[lowerCaseBeanName]s",[lowerCaseBeanName]s);
+		modelAndView.addObject("itemCount",count);
+		
+		return modelAndView;
+	}
+	
+}

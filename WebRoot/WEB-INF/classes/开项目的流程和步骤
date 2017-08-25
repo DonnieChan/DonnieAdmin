@@ -1,0 +1,13 @@
+以做一个模块的功能来计算开发步骤和时间：
+1：新建一个包bean
+2:新建一个实体：Content.java
+3:新建一个dao/content IContentMapper.java
+4:新建一个Content.xml的sql和表映射文件
+5:新建一个Service 新建一个IContentService和ContentServiceImpl
+6:新建一个web包：ContentController
+7:新建一个pages/content/list.jsp/add.jsp/搜索、分页
+
+22:46 ----- 6分钟
+
+
+

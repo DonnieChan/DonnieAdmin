@@ -1,0 +1,107 @@
+package [serviceImplPackage];
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.donnie.bean.[beanName];
+import com.donnie.bean.RequestParams;
+import [daoPackage].[lowerCaseBeanName].I[beanName]Mapper;
+import [servicePackage].[lowerCaseBeanName].I[beanName]Service;
+import com.donnie.util.TmStringUtils;
+
+@Service
+public class [beanName]ServiceImpl implements I[beanName]Service{
+    
+	@Autowired
+	I[beanName]Mapper [lowerCaseBeanName]Mapper;   //它相当于DAO类的职能
+	
+	/***
+	 * 描述：(查找[description])
+	 * 方法名：find[beanName]s
+	 * 创建人：Donnie 时间：2016年3月24日-下午7:04:54 
+	 * @return List<[beanName]>
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	@Override
+	public List<[beanName]> find[beanName]s(RequestParams requestParams){
+		if(TmStringUtils.isEmpty(requestParams.getOrder())){
+		  requestParams.setOrder("createTime desc");
+		}
+		return [lowerCaseBeanName]Mapper.find[beanName]s(requestParams);
+	}
+	
+	/***
+	 * 描述：(求总数)
+	 * [daoPackage].[lowerCaseBeanName]
+	 * 方法名：count
+	 * 创建人：Donnie 时间：[date] 
+	 * @param requestParams
+	 * @return int
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	@Override
+    public int count(RequestParams requestParams){
+       return [lowerCaseBeanName]Mapper.count(requestParams);
+    }
+	
+	/***
+	 * 描述：(查找单个[description])
+	 * 方法名：get
+	 * 创建人：Donnie 时间：[date] 
+	 * @param requestParams
+	 * @return List<[beanName]>
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	@Override
+    public [beanName] get(Integer id){
+        return [lowerCaseBeanName]Mapper.get(id);
+    }
+
+	/***
+     * 描述：(保存[description])
+     * 方法名：save[beanName]
+     * 创建人：Donnie 时间：2016年4月10日-下午7:28:08 
+     * @param [lowerCaseBeanName]
+     * @return [beanName]
+     * @exception 
+     * @since  1.0.0
+     */
+	@Override
+	public int save([beanName] [lowerCaseBeanName]) {
+		return [lowerCaseBeanName]Mapper.save([lowerCaseBeanName]);
+	}
+
+	/***
+     * 描述：(保存[description])
+     * 方法名：update[beanName]
+     * 创建人：Donnie 时间：2016年4月10日-下午7:28:14 
+     * @param [lowerCaseBeanName]
+     * @return [beanName]
+     * @exception 
+     * @since  1.0.0
+     */
+	@Override
+	public int update([beanName] [lowerCaseBeanName]) {
+		return [lowerCaseBeanName]Mapper.update([lowerCaseBeanName]);
+	}
+    
+	/***
+     * 描述：(删除[description])
+     * 方法名：delete[beanName]
+     * 创建人：Donnie 时间：2016年4月10日-下午7:28:20 
+     * @param [lowerCaseBeanName]
+     * @return [beanName]
+     * @exception 
+     * @since  1.0.0
+     */
+	@Override
+	public int delete([beanName] [lowerCaseBeanName]) {
+		return [lowerCaseBeanName]Mapper.delete([lowerCaseBeanName]);
+	}
+	
+}

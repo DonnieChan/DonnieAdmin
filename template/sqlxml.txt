@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="[daoPackage].[lowerCaseBeanName].I[beanName]Mapper" >
+	<select id="find[beanName]s" resultType="[beanName]" parameterType="RequestParams">
+		SELECT
+		  id,
+	      name,
+	      user_id as userId,
+	      create_time as createTime,
+	      is_delete as isDelete,
+	      status
+		FROM
+			keke_[lowerCaseBeanName] 
+      <trim prefix="WHERE" prefixOverrides="AND | OR">  
+			<if test="@com.donnie.util.TmStringUtils@isNotEmpty(keyword)">
+				 name LIKE '%${keyword}%'
+			</if>
+	  </trim>
+		ORDER BY ${order} 
+		LIMIT #{pageNo},#{pageSize};	
+    </select>
+    
+    <!-- 获取内容记录的总数 -->
+    <select id="counts" resultType="int" parameterType="RequestParams">
+		SELECT
+		  count(1)
+		FROM
+			keke_[lowerCaseBeanName] 
+	  <!-- 
+	          以下这种写法，当keyword内容不为空时，where条件语句才生效
+	   -->
+      <trim prefix="WHERE" prefixOverrides="AND | OR">  
+		 	<if test="@com.donnie.util.TmStringUtils@isNotEmpty(keyword)">
+				 name LIKE '%${keyword}%'
+			</if>			
+	  </trim>
+    </select>
+</mapper>

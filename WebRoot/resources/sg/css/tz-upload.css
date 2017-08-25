@@ -1,0 +1,45 @@
+.upload-dialog{left:auto;top:auto;right:5px;bottom:2px;width:525px;background:#fff;z-index:100;position:fixed;-webkit-box-shadow:0 0 20px -2px rgba(0,0,0,.5);-moz-box-shadow:0 0 20px -2px rgba(0,0,0,.5);-ms-box-shadow:0 0 20px -2px rgba(0,0,0,.5);box-shadow:0 0 20px -2px rgba(0,0,0,.5);border:0;height:380px;}
+.tzui-upheader{background:#3B89E1;color:#fff;height: 42px;line-height: 42px;}
+#uploadheadermsg{font-size:16px;color:#fff;font-weight:bold;padding-left:5px;}
+.upload-file-item{border-bottom:1px solid #d2d2d2;padding:8px 0}
+.upload-dialog .ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.file-item{border-bottom:1px solid #d2d2d2;zoom:1;position:relative;height:42px;line-height:42px;}
+.h-c1{width:56%;text-indent:15px;}
+.h-c2{width:20%;text-indent:10px}
+.h-c3{width:12%}
+.h-c4{width:10%}
+.upclose{position:absolute;right:8px;top:8px;color:#fff;font-size:16px;padding:0 15px;font-family:cursive;font-weight:700;z-index:101;}
+.upmin{position:absolute;right:38px;top:-1px;color:#fff;font-size:16px;padding:0 15px;font-family:cursive;font-weight:700;z-index:101;}
+.upmax{position:absolute;right:32px;top:3px;color:#fff;font-size:30px;padding:0 15px;font-family:cursive;font-weight:700;z-index:101;}
+.exticon{background:url(../images/uploadext.png);display:inline-block;width:26px;height:22px;vertical-align:middle;}
+.upicon{background:url(../images/uploadicon.png);display:inline-block;width:20px;height:17px;vertical-align:middle;position:relative;z-index: 102; }
+.upcancle{background-position:18px 3px;}
+.upstop{background-position:18px 57px;}
+.upstar{background-position:18px 74px;}
+.upext_rar{background-position:-357px -83px;}
+.upext_doc,.upext_docx{background-position:-101px -83px}
+.upext_xls,.upext_xlsx{background-position:-133px -83px}
+.upext_ppt,.upext_pptx{background-position:-261px -83px}
+.upext_vsd{background-position:-37px -83px}
+.upext_pdf{background-position:-69px -83px}
+.upext_apk{background-position:-389px -83px}
+.upext_dws,.upext_dwt,.upext_dxf,.upext_dwg{background-position:-6px -105px}
+.upext_mmap{background-position:-37px -106px}
+.upext_xmind{background-position:-69px -106px}
+.upext_mm{background-position:-69px -106px}
+.upext_exe,.upext_msi,.upext_dmg{background-position:-325px -83px}
+.upext_ipa{background-position:-293px -83px}
+.upext_zip,.upext_rar{background-position:-357px -83px}
+.upext_psd{background-position:-517px -83px}
+.upext_key{background-position:-550px -83px}
+.upext_ai{background-position:-583px -83px}
+.upext_txt,..upext_html,.upext_jsp,.upext_shtml,.upext_js{background-position:-165px -83px}
+.upext_torrent{background-position:-453px -83px}
+.upext_dir{background-position:-5px -3px}
+.upext_jpg,.upext_jpeg,.upext_gif,.upext_bmp,.upext_png,.upext_jpe,.upext_cur,.upext_svg,.upext_svgz,.upext_tif,.upext_tiff,.upext_ico{background-position:-5px -82px}
+.upext_wma,.upext_wav,.upext_mp3,.upext_aac,.upext_ra,.upext_ram,.upext_mp2,.upext_ogg,.upext_aif,.upext_mpega,.upext_amr,.upext_mid,.upext_midi,.upext_m4a{background-position:-197px -82px}
+.upext_wmv,.upext_rmvb,.upext_mpeg4,.upext_mpeg2,.upext_flv,.upext_avi,.upext_3gp,.upext_mpga,.upext_qt,.upext_rm,.upext_wmz,.upext_wmd,.upext_wvx,.upext_wmx,.upext_wm,.upext_swf,.upext_mpg,.upext_mp4,.upext_mkv,.upext_mpeg,.upext_mov,.upext_asf{background-position:-229px -82px}
+/*文件进度条*/
+.upload_percentbox{position: relative;}
+.uploadPercent{position: absolute;height: 42px;width: 0%;background: #141414;opacity:0.5;z-index: 100}
+.percentnum{font-size: 12px;position: absolute;color: #fff;z-index: 103;font-weight: 700;}

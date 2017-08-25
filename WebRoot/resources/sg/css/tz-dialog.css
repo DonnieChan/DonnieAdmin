@@ -1,0 +1,19 @@
+.tzui-dialog{background:rgb(34,32,33);color:#666;box-shadow:0px 0px 5px rgba(0,0,0,0.5);position:fixed;left:0px;top:0px;z-index:102}
+.tzui-dialog .tzdialog_title{line-height:21px;color:#fff;font-weight:bold;cursor:default;padding:10px 15px;margin:0em;outline:none;cursor: move;}
+.tzui-dialog .tzdialog_content{padding:0;margin:0em;border-top:0;}
+.tzui-dialog .tzdialog_message{padding:20px 15px;}
+.tzui-dialog .delete{position: absolute;right: 15px;top: 5px;font-size: 18px;font-family: cursive;color:#fff;display: none;transition:a11 0.6s ease)}
+.tzui-dialog:hover .delete{transition:a11 0.6s ease;display: block;transform:scale(1.1)}
+.tzui-dialog .tzdialog_message .content{float:left;padding: 0px 20px;}
+.tzui-dialog .tzdialog_panel{text-align:center;padding:6px 0 20px 0;background:#4C5C7C}
+.tzui-dialog .tzdialog_panel input{min-width:100px;text-align:center;}
+.tzui-dialog .tzdialog_ok, .tzui-dialog .tzdialog_cancel{background:#fff;color:#141414;padding:5px 0;cursor:pointer;border:1px solid #4D5D7D}
+.tzui-dialog .tzdialog_ok:hover,.tzui-dialog .tzdialo_cancel:hover{color:#141414;padding:5px 0;background:#e5e5e5;}
+.tzui-dialog .drag{width:100px;height:100px;top:0px;left:0px;color:#fff;}
+.tzui-dialog .title{height:50px;background:#114144}
+.tzui-dialog .icon{background:url(../images/dialog.png);float:left;margin-left: 12px; }
+.tzui-dialog .warn{ display: block;width: 44px;height: 38px;background-position: -2px -3px}
+.tzui-dialog .error{ display: block;width: 44px;height: 38px;background-position: -47px -3px}
+.tzui-dialog .success{ display: block;width: 44px;height: 38px;background-position: -100px -3px}
+.tzui-dialog .tip{ display: block;width: 44px;height: 38px;background-position: -146px -3px}
+.tzui-dialog .info{ display: block;width: 44px;height: 38px;background-position: -190 -3px}
