@@ -11,6 +11,6 @@
   }else{
     basePath = request.getScheme()+"://"+request.getServerName()+":"+port+path;
   }
-  
   pageContext.setAttribute("basePath", basePath);
+  pageContext.setAttribute("adminPath", basePath + "/admin");
 %>

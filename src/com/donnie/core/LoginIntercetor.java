@@ -40,8 +40,8 @@ public class LoginIntercetor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		System.out.println("进来了吗..........");
-		AdminUser user =(AdminUser)request.getSession().getAttribute(SESSION_USER);
+		System.out.println("正在验证当前用户是否已经成功登录过..........");
+		AdminUser user = (AdminUser)request.getSession().getAttribute(SESSION_USER);
 		if(user!=null){
 			return true;
 		}else{

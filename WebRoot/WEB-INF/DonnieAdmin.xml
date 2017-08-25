@@ -16,7 +16,6 @@
       ">
 	  <!-- 启用Spring mvc 注解 -->
 	   <mvc:annotation-driven validator="validator">
-	   
 	    <mvc:message-converters register-defaults="true">
 	    
 	    <!-- 以UTF-8字符集编码的格式先解析返回到前端的字符串中的中文，日文等，再进行内容的返回 -->
@@ -31,6 +30,7 @@
         </bean> 
         
 		<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
+		
 		<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/> 
 		
 		<!-- 将Controller层以对象的形式返回给前端的内容，转换为json字符串，便于ajax解析 -->
@@ -57,7 +57,6 @@
                 </list>  
             </property>
          </bean>
-        
     </mvc:message-converters> 
    </mvc:annotation-driven>
    
@@ -67,7 +66,6 @@
         <!--不设置则默认为classpath下的 ValidationMessages.properties -->
         <property name="validationMessageSource" ref="validatemessageSource"/>
     </bean>
-    
     <!-- 读取 记载了请求内容规范不正确时的提示内容 的资源文件，为什么要要用资源文件：就是是方便统一管理-->
  	<bean id="validatemessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">  
         <property name="basename" value="classpath:validatemessages"/>  
