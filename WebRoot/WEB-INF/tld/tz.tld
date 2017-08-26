@@ -88,7 +88,7 @@
  </tag>
   		
   		
-  <!-- ****************************************************函数自定义标签开始************************************** -->	
+  <!-- ***********************************************函数自定义标签开始************************************************** -->	
   <function>
 	<!--对你这个业务标签的描述-->
     <description> 格式化日期 </description>
@@ -154,5 +154,11 @@
  	<example>${tz:ipLocation(127.0.0.1)}===本地</example>
  </function>
  
- 
+ <function>
+ 	<description>检测请求路径字符串中，是否包含既定的内容</description>
+ 	<name>indexOf</name>
+ 	<function-class>com.donnie.tag.TzFunctions</function-class>
+ 	<function-signature>int indexOf(java.lang.String, java.lang.String)</function-signature>
+ 	<example>${tz:indexOf("DonnieAdmin/admin/message/list.jsp","dmin/message/list")}==0</example>
+ </function>
 </taglib>

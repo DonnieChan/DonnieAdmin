@@ -571,31 +571,31 @@ public class TzAutoProject {
 	  //getRoot(pageTemplatePath);
 	  
 	  //创建bean
-	  createBean();
+	  //createBean();
 		
 	  //创建beanDao
 	  //createDao();
 	
 	  //创建SQLXML
-	  createSQLXml();
+	  //createSQLXml();
 
 	  //创建Service
 	  //createService();
 	  
 	  //创建ServiceImpl
-	  createServiceImpl();
+	  //createServiceImpl();
 
 	  //创建WebController
 	  //createWebController();
 	  
 	  //创建table数据库表
-	  //createTable();
+	  createTable();
 	  
 	  //创建page
 	  //createPage();
 	  
 	  //创建template
-	  createTemplate();
+	  //createTemplate();
 	}
 	
 }

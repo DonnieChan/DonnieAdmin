@@ -237,6 +237,20 @@ public class TzFunctions {
 		return TmIpUtil.ipLocation(ip);
 	}
 	
+	/***
+	 * 
+	 * 描述：(检测请求路径字符串中，是否包含既定的内容)
+	 * 方法名：indexOf
+	 * 创建人：Donnie 时间：2017年8月26日-下午3:21:57 
+	 * @param content
+	 * @param includeContent
+	 * @return int
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	public static int indexOf(String content, String search) {
+		return content.indexOf(search);
+	}
 	
 	public static void main(String[] args) {
 		//char A 65
