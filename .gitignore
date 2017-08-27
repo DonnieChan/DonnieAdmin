@@ -5,6 +5,6 @@
 .idea/modules.xml
 .idea/workspace.xml
 DonnieAdmin.iml
-WebRoot/WEB-INF/classes/
+WebRoot/WEB-INF/classes/com/donnie
 .idea/copyright/profiles_settings.xml
 WebRoot/WEB-INF/classes/com/donnie/auto/TzAutoProject.class

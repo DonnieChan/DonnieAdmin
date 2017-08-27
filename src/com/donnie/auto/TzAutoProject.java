@@ -16,7 +16,7 @@ import com.donnie.auto.SqlFileExecutor;
 
 /**
  * <b>类名称：</b>TzAutoProject<br/>
- * <b>类描述：</b><br/>
+ * <b>类描述：</b>根据自定义的bean的名字，创建其MVC三层架构中锁涉及到的各种java,jsp文件<br/>
  * <b>创建人：</b>donnie<br/>
  * <b>修改人：</b>donnie<br/>
  * <b>修改时间：</b>2016年4月4日 下午2:27:09<br/>

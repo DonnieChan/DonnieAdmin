@@ -8,12 +8,17 @@
 	          <input type="hidden" id="itemcount" value="${itemCount}">
 	       </c:if>
 	    </td>	
-		<td>${content.name} 
+		<td>${content.title} 
 		<td>${content.userId}</td>	
 		<td class="tmui-tips" tip="${tz:formatDate(content.createTime,'yyyy-MM-dd HH:mm:ss')}">
 		   ${tz:timeFormat(content.createTime)}
-		</td>	
-		<td>${content.isDelete}</td>	
+		</td>
+		<td>	
+		  <tz:if test="${content.isDelete==0}">
+	        <tz:then><span class="green">否</span></tz:then>
+	        <tz:else><span class="red">是</span></tz:else>
+		  </tz:if>
+		</td>
 		<td>${content.status}</td>
 		<td><a href="javascript:void(0);">未删除</a></td>
 	</tr>

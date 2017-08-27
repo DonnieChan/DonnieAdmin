@@ -27,7 +27,7 @@ public class TzElseTag extends TagSupport{
 	public int doStartTag() throws JspException {
 		TzIFTag parent = (TzIFTag)this.getParent();
 		if(parent!=null && !parent.getTest()){
-			return EVAL_BODY_INCLUDE;//继续去执行标签提的内容
+			return EVAL_BODY_INCLUDE;//继续去执行标签体的内容
 		}else{
 			return SKIP_BODY;
 		}

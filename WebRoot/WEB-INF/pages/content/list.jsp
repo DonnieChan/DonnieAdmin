@@ -53,6 +53,7 @@
 							<tr>
 								<th>主键</th>	
 								<th>名称 <span class="up"></span> <span class="down"></span></th>	
+								<th>用户ID</th>
 								<th>创建时间</th>	
 								<th>删除状态</th>
 								<th>发布状态</th>	
@@ -60,7 +61,7 @@
 							</tr>
 						</thead>
 						<!--身体部-->
-						<tbody id="tbody" data-model="message">
+						<tbody id="tbody" data-model="content">
 						<!-- 此处使用template模版的概念来引入表格内容 -->
 						  <tr>
 						    <td id="loading" colspan="100"></td>
