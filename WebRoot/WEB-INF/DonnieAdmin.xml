@@ -15,8 +15,11 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd
       ">
 	  <!-- 启用Spring mvc 注解 -->
-	   <mvc:annotation-driven validator="validator">
+	<mvc:annotation-driven validator="validator">
+	    
+	    
 	    <mvc:message-converters register-defaults="true">
+	    
 	    
 	    <!-- 以UTF-8字符集编码的格式先解析返回到前端的字符串中的中文，日文等，再进行内容的返回 -->
         <bean class="com.donnie.core.UTF8StringHttpMessageConverter">
@@ -29,9 +32,12 @@
         	</property>
         </bean> 
         
+        
 		<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
 		
+		
 		<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/> 
+		
 		
 		<!-- 将Controller层以对象的形式返回给前端的内容，转换为json字符串，便于ajax解析 -->
         <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -48,7 +54,7 @@
                        <property name="serializationInclusion">
                            <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
                        </property> 
-                   </bean>  
+                 </bean>  
         	</property>
         	 <property name="supportedMediaTypes">  
                 <list>  
@@ -60,7 +66,8 @@
     </mvc:message-converters> 
    </mvc:annotation-driven>
    
-   <!-- 请求内容验证器的声明 -->
+   
+    <!-- 请求内容验证器的声明 -->
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>
         <!--不设置则默认为classpath下的 ValidationMessages.properties -->
@@ -73,14 +80,15 @@
         <property name="cacheSeconds" value="120"/>  
     </bean>
     
+    
     <!-- 资源文件的处理 -->
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
    
     <!-- 扫包(在指定目录下，扫描绑定了Spring注解的类，方法，或成员属性) -->
-	 <context:component-scan base-package="com.donnie.web"></context:component-scan>  
+	<context:component-scan base-package="com.donnie.web"></context:component-scan>  
 	
 	<!-- 配置拦截器 -->
-     <mvc:interceptors> 
+    <mvc:interceptors> 
      <!-- 拦截管理员相关的请求 -->
      	<mvc:interceptor>
      		<mvc:mapping path="/admin/**"/>
@@ -89,7 +97,6 @@
       		<mvc:exclude-mapping path="/user/add.html"/>
      		<bean class="com.donnie.core.LoginIntercetor"></bean>
      	</mvc:interceptor>
-     
      <!-- 拦截未登录的情况下，尝试访问内容列表的请求 -->
        <mvc:interceptor>
      		<mvc:mapping path="/list/**"/>
@@ -97,42 +104,41 @@
      		<mvc:exclude-mapping path="/user/add.html"/>
      		<bean class="com.donnie.core.LoginIntercetor"></bean>
      	</mvc:interceptor> 
-      </mvc:interceptors> 
+    </mvc:interceptors> 
 
 	<!-- 全路径 -->
-     <bean id="path" class="com.donnie.core.BasePathExpsoer" init-method="init">
+    <bean id="path" class="com.donnie.core.BasePathExpsoer" init-method="init">
        <!--<property name="rootPath" value="http://www.tanzhouedu.com/file"></property> -->
-     </bean>
+    </bean>
     
     <!-- 视图渲染 --> 
-	  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       	  <property name="prefix" value="/WEB-INF/pages/"></property>
           <property name="suffix" value=".jsp"></property>
-      </bean>  
+    </bean>  
        
-   <!-- springmvc验证码的实现 -->
+    <!-- springmvc验证码的实现 -->
      <!--
      	 文件上传的配置 1kb=1024byte 1MB = 1024KB
      	依赖包：
      	commons-fileupload-1.2.1.jar
 		commons-io-2.0.1.jar
      -->
-     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
      	<!-- 限制文件上大小，单位是:字节 -->
      	<property name="maxUploadSize" value="5242880000"></property>
      	<!-- 请求编码的格式 -->
      	<property name="defaultEncoding" value="UTF-8"></property>
      	<!-- 上传的临时目录的制定 -->
      	<property name="uploadTempDir" value="upload/temp/"></property>
-     </bean>
+    </bean>
      
      <!-- 统一异常处理 -->
-     <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
      	<property name="exceptionMappings">
      		<props>
      			<prop key="java.lang.RuntimeException">forward:/error.jsp</prop>
      		</props>
      	</property>
      </bean>
-     
 </beans>

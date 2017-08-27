@@ -1,17 +1,8 @@
 <%@page import="static com.donnie.util.TzConstant.*"%>
 <%@page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/pages/common/taglib.jsp" %>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <title>潭州学院keke老师模版页面</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!-- common.jsp中包含引用的js，css，js中要用到的basePath代表项目根目录的字符串变量 -->
-  </head>
-  
   <body>
  <%--   <h1>This is the welcome page of Pages root folder.</h1>
    <h2>basePath是：${basePath}</h2>
@@ -26,51 +17,30 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-  <%@include file="/WEB-INF/pages/common/common.jsp" %>
+	<%@include file="/WEB-INF/pages/common/common.jsp" %>
+	<script type="text/javascript" src="${basePath}/resources/sg/tz_page.js"></script>
+	<script type="text/javascript" src="${basePath}/resources/js/tz_admin.js"></script>
+ </head>
+ <body>
+ <%--   <h1>This is the welcome page of Pages root folder.</h1>
+   <h2>basePath是：${basePath}</h2>
+   <h2>rootPath是：${rootPath}</h2>
+   <h2>resPath是：${resPath}</h2>
+   <h2>当前用户是：<%=session.getAttribute(SESSION_USER_USERNAME) %></h2> --%>
+  <html>
+  <head>
+    <title>潭州学院Donnie模板页面</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<script type="text/javascript" src="${basePath}/resources/sg/tz_page.js"></script>
+	<script type="text/javascript" src="${basePath}/resources/js/tz_admin.js"></script>
  </head>
  <body>
 	<div class="wrap">
-		<div class="slider">
-			<div class="logo">
-				<a href="#"><img src="${basePath}/resources/images/logo.png"/></a>
-			</div>
-			<div class="nav">
-				<ul>
-					 <li class="items"><a href="javascript:void(0);"><i class="fa fa-home"></i>首页</a></li>
-					 <li class="items active"><a href="javascript:void(0);"><i class="fa fa-signal"></i>统计报表</a></li>
-					 <li class="items"><a href="javascript:void(0);"><i class="fa fa-inbox"></i>区块</a></li>
-					 <li class="items"><a href="javascript:void(0);"><i class="fa fa-th"></i>表格</a></li>
-					 <li class="items"><a href="javascript:void(0);"><i class="fa fa-send"></i>其他</a></li>
-					 <li class="items">
-						<a href="javascript:void(0);"><i class="fa fa-th-list"></i>表单</a>
-						<ul>
-							 <li class="citems"><a href="javascript:void(0);"><i class="fa fa-inbox"></i>区块</a></li>
-							 <li class="citems"><a href="javascript:void(0);"><i class="fa fa-th"></i>表格</a></li>
-							 <li class="citems"><a href="javascript:void(0);"><i class="fa fa-send"></i>其他</a></li>
-						</ul>
-						<span class="numicon c5">3</span>
-					 </li>
-					 <li class="items">
-						<a href="javascript:void(0);"><i class="fa fa-tint"></i>按钮组</a>
-						<ul>
-							 <li class="citems"><a href="javascript:void(0);"><i class="fa fa-inbox"></i>区块</a></li>
-							 <li class="citems"><a href="javascript:void(0);"><i class="fa fa-th"></i>表格</a></li>
-							 <li class="citems"><a href="javascript:void(0);"><i class="fa fa-send"></i>其他</a></li>
-							 <li class="citems"><a href="javascript:void(0);"><i class="fa fa-th"></i>表格</a></li>
-							 <li class="citems"><a href="javascript:void(0);"><i class="fa fa-send"></i>其他</a></li>
-						</ul>
-						<span class="numicon c1">5</span>
-					 </li>
-					 <li class="items"><a href="javascript:void(0);"><i class="fa fa-pencil"></i>元素</a></li>
-					 <li class="items"><a href="javascript:void(0);"><i class="fa fa-star"></i>Addons 5</a></li>
-					 <li class="items"><a href="javascript:void(0);"><i class="fa fa-file-o"></i>Error</a></li>
-				</ul>
-			</div>
-		</div>
-
-		<style>
-			 
-		</style>
+        <%@include file="/WEB-INF/pages/common/left.jsp" %>
 		<div class="content">
 			<div class="header">
 				<ul class="fl">

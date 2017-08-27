@@ -34,8 +34,8 @@ public class TzIFTag extends TagSupport{
 
 	@Override
 	public int doStartTag() throws JspException {
-		return EVAL_BODY_INCLUDE;//继续去执行标签提的内容
-		//SKIP_BODY====默认值就是skip_body---忽略标签提直接进入doEndTag()
+		return EVAL_BODY_INCLUDE;//继续去执行标签体的内容
+		//SKIP_BODY====默认值就是skip_body---忽略标签体直接进入doEndTag()
 	}
 	
 }

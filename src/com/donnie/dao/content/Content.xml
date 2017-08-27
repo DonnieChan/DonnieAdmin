@@ -6,11 +6,10 @@
 		SELECT
 		  id,
 	      title,
-	      content,
-	      create_time,
-	      update_time,
-	      is_delete,
-	      channel_id,
+	      user_id as userId,
+	      create_time as createTime,
+	      update_time as updateTime,
+	      is_delete as isDelete,
 	      status
 		FROM
 			keke_content 

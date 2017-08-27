@@ -2,7 +2,7 @@
  * Tm系统平台
  * moonvip
  * 创建人:Donnie 
- * 时间：2017年08月25日 17:49:33
+ * 时间：2017年08月26日 16:34:38
  * 2015Tm公司-版权所有
  */
 package com.donnie.bean;
@@ -15,7 +15,7 @@ import java.util.Date;
  * Message
  * Content 创建人:Donnie
  * QQ: 461560867
- * 时间：2017年08月25日 17:49:33
+ * 时间：2017年08月26日 16:34:38
  * 
  * @version 1.0.0
  * 

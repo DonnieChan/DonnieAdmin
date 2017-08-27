@@ -9,7 +9,7 @@
 	      create_time as createTime,
 	      update_time as updateTime,
 	      user_id as userId,
-	      is_delete,
+	      is_delete as isDelete,
 	      status
 		FROM
 			keke_message 
