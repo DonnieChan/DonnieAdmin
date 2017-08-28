@@ -15,11 +15,16 @@
 		</td>
 		<td>	
 		  <tz:if test="${content.isDelete==0}">
-	        <tz:then><span class="green">否</span></tz:then>
-	        <tz:else><span class="red">是</span></tz:else>
+	        <tz:then><a href="javascript:void(0);" data-opid="${content.id}" class="green">否</a></tz:then>
+	        <tz:else><a href="javascript:void(0);" data-opid="${content.id}" class="red">是</a></tz:else>
 		  </tz:if>
 		</td>
-		<td>${content.status}</td>
+		<td>
+		  <tz:if test="${content.status==0}">data-opid="${content.id}" 
+	        <tz:then><a href="javascript:void(0);" data-opid="${content.id}" class="red">否</a></tz:then>
+	        <tz:else><a href="javascript:void(0);" data-opid="${content.id}" class="green">是</a></tz:else>
+		  </tz:if>
+		</td>
 		<td><a href="javascript:void(0);">未删除</a></td>
 	</tr>
 </c:forEach>
