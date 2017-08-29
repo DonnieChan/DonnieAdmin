@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.donnie.bean.Content;
@@ -30,7 +32,7 @@ public class ContentController {
 	IContentService contentService;
 	
 	/***
-	 * 描述：(返回多条用户资料内容)
+	 * 描述：(返回多条用户资料内容给列表)
 	 * 方法名：list
 	 * 创建人：Donnie 时间：2016年4月14日-上午1:06:19 
 	 * @param requestParams
@@ -43,6 +45,16 @@ public class ContentController {
 		return "content/list";
 	}
 	
+	/***
+	 * 
+	 * 描述：(获取列表模板中的内容)
+	 * 方法名：template
+	 * 创建人：Donnie 时间：2017年8月30日-上午12:13:01 
+	 * @param requestParams
+	 * @return ModelAndView
+	 * @exception 
+	 * @since  1.0.0
+	 */
 	@RequestMapping("/template")
 	public ModelAndView template(RequestParams requestParams){
 		ModelAndView modelAndView = new ModelAndView();
@@ -60,5 +72,21 @@ public class ContentController {
 		modelAndView.addObject("itemCount",count);
 		
 		return modelAndView;
+	}
+	
+	/***
+	 * 描述：(更新消息内容)
+	 * 方法名：update
+	 * 创建人：Donnie 时间：2017年8月30日-上午12:20:35 
+	 * @param content
+	 * @return String
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	@ResponseBody
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String update(Content content){
+		int count = contentService.update(content);
+		return count!=0 ? "success":"fail";
 	}
 }

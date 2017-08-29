@@ -16,6 +16,7 @@ import com.donnie.bean.AdminUser;
 import com.donnie.bean.Content;
 import com.donnie.bean.User;
 import com.donnie.bean.RequestParams;
+import com.donnie.dao.content.IContentMapper;
 import com.donnie.dao.user.IUserMapper;
 import com.donnie.service.content.IContentService;
 import com.donnie.service.user.IAdminUserService;
@@ -45,7 +46,7 @@ public class TestApplicationContext {
 	}*/
 	
 	
-	@Test
+/*	@Test
 	public void testAdminUser(){
 		
 		RequestParams requestParams = new RequestParams();
@@ -57,14 +58,14 @@ public class TestApplicationContext {
 		  System.out.println("当前adminUser的账号名是：   " + adminUser.getEmail());
 		}
 		
-	}
+	}*/
 	
 	
 /*	@Test
 	public void testContents(){
 		
 		RequestParams requestParams = new RequestParams();
-      //  requestParams.setOrder("create_time");
+      //  requestParams.setOrder("create_time desc");
      //   requestParams.setPageNo(0);
      //   requestParams.setPageSize(10);
         
@@ -83,4 +84,13 @@ public class TestApplicationContext {
 		System.out.println("root被Md5加密后为：" + TmStringUtils.md5Base64("root"));
 	}*/
 	
+	@Test
+	public void testUpdate(){
+		Content content = new Content();
+		content.setId(50);
+		content.setStatus(1);   //0未发布1发布
+		content.setIsDelete(0); //0删除1未删除
+		int count = contentService.update(content);
+		System.out.println("===============>" + count);
+	}
 }

@@ -15,10 +15,6 @@ $(function(){
 //初始化列表
 tzAdmin.loadData(0, 10, function(itemCount) {
 	tzAdmin.initPage(itemCount);
-	/*
-	 * if(window.sessionStorage) sessionStorage.setItem("table_content",
-	 * $("#tbody").html());
-	 */
 	});
 });
 
@@ -77,6 +73,25 @@ var tzAdmin = {
 		   }
 		   //如有输入搜索内容，则进行关键字搜索
 		   tzAdmin.loadData(0,10);
+	   },
+	   op:function(obj){
+		   //灵活使用data方法，缓存行级数据需要变更的部分值
+		   var $this = $(obj);
+		   var opid = $this.data("opid");
+		   var mark = $this.data("mark");
+		   var val=$this.data("val");
+		   var params = {};
+		   params[mark] = val;
+		   params["id"] = opid;
+
+		   $.ajax({
+			   type:"post",
+			   url:adminPath + "/content/update",
+			   data:params,
+			   success:function(data){
+				   alert(data);
+			   }
+		   });
 	   }
 };
 

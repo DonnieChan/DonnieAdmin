@@ -49,4 +49,13 @@
 			</if>
 	  </trim>
     </select>
+    
+    <update id="update" parameterType="Content">
+        update keke_content
+        <set>
+          <if test="status!=null">status = #{status}</if>
+          <if test="isDelete!=null">is_delete = #{isDelete}</if>
+        </set>
+        where id=#{id}
+    </update>
 </mapper>

@@ -14,15 +14,15 @@
 		   ${tz:timeFormat(content.createTime)}
 		</td>
 		<td>	
-		  <tz:if test="${content.isDelete==0}">
-	        <tz:then><a href="javascript:void(0);" data-opid="${content.id}" class="green">否</a></tz:then>
-	        <tz:else><a href="javascript:void(0);" data-opid="${content.id}" class="red">是</a></tz:else>
+		  <tz:if test="${content.isDelete==0}">  <!-- 0删除1未删除 -->
+	        <tz:then><a href="javascript:void(0);" data-opid="${content.id}" data-val="1" data-mark="isDelete" onclick="tzAdmin.op(this);" class="red">是</a></tz:then>
+	        <tz:else><a href="javascript:void(0);" data-opid="${content.id}" data-val="0" data-mark="isDelete" onclick="tzAdmin.op(this);" class="green">否</a></tz:else>
 		  </tz:if>
 		</td>
 		<td>
-		  <tz:if test="${content.status==0}">data-opid="${content.id}" 
-	        <tz:then><a href="javascript:void(0);" data-opid="${content.id}" class="red">否</a></tz:then>
-	        <tz:else><a href="javascript:void(0);" data-opid="${content.id}" class="green">是</a></tz:else>
+		  <tz:if test="${content.status==0}">  <!-- 0未发布1发布 -->
+	        <tz:then><a href="javascript:void(0);" data-opid="${content.id}" data-val="1" data-mark="status" onclick="tzAdmin.op(this);" class="red">否</a></tz:then>
+	        <tz:else><a href="javascript:void(0);" data-opid="${content.id}" data-val="0" data-mark="status" onclick="tzAdmin.op(this);" class="green">是</a></tz:else>
 		  </tz:if>
 		</td>
 		<td><a href="javascript:void(0);">未删除</a></td>
