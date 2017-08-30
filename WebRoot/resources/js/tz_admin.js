@@ -77,9 +77,14 @@ var tzAdmin = {
 	   op:function(obj){
 		   //灵活使用data方法，缓存行级数据需要变更的部分值
 		   var $this = $(obj);
+		   var $td = $this.parent("td");
 		   var opid = $this.data("opid");
 		   var mark = $this.data("mark");
-		   var val=$this.data("val");
+		   var val = $this.data("val");
+           //状态控制的相关变量
+		   var text;
+		   var color;
+		   //后台update操作的关键字
 		   var params = {};
 		   params[mark] = val;
 		   params["id"] = opid;
@@ -89,12 +94,25 @@ var tzAdmin = {
 			   url:adminPath + "/content/update",
 			   data:params,
 			   success:function(data){
-				   alert(data);
+				   if(data == "success"){
+					switch(mark){
+					  case "isDelete":
+					   if(val == 0){
+						 $this.text("是");
+						 $this.removeClass("green").addClass("red");
+						 $this.data("val",1);
+					   }else{
+						 $this.text("否");
+						 $this.removeClass("red").addClass("green");
+						 $this.data("val",0);
+					   }
+					   break;
+				   }
 			   }
-		   });
-	   }
-};
-
+		   }
+	   });
+   }
+}
 //添加等待效果？该原型方法定义在sg.js中
 function loading2(target,mark){
 	  $.loading({target:$(target),mark:1});
