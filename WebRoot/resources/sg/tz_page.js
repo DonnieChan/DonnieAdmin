@@ -1,4 +1,3 @@
-
  (function($){
 	
 	$.tzPageCalculator = function(maxentries, opts) {

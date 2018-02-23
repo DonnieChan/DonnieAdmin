@@ -14,12 +14,16 @@
        http://www.springframework.org/schema/mvc 
        http://www.springframework.org/schema/mvc/spring-mvc.xsd
       ">
-	  <!-- 启用Spring mvc 注解 -->
-	<mvc:annotation-driven validator="validator">
+    <!-- 资源文件的处理 -->
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+   
+    <!-- 扫包(在指定目录下，扫描绑定了Spring注解的类，方法，或成员属性) -->
+	<context:component-scan base-package="com.donnie.web"></context:component-scan>    
+    
+	<!-- 启用Spring mvc 注解 -->
+	<mvc:annotation-driven validator="validator">	    
 	    
-	    
-	    <mvc:message-converters register-defaults="true">
-	    
+	 <mvc:message-converters register-defaults="true">	    
 	    
 	    <!-- 以UTF-8字符集编码的格式先解析返回到前端的字符串中的中文，日文等，再进行内容的返回 -->
         <bean class="com.donnie.core.UTF8StringHttpMessageConverter">
@@ -33,11 +37,9 @@
         </bean> 
         
         
-		<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
+		<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>		
 		
-		
-		<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/> 
-		
+		<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/> 		
 		
 		<!-- 将Controller层以对象的形式返回给前端的内容，转换为json字符串，便于ajax解析 -->
         <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -63,29 +65,24 @@
                 </list>  
             </property>
          </bean>
-    </mvc:message-converters> 
-   </mvc:annotation-driven>
+    
+     </mvc:message-converters> 
    
-   
-    <!-- 请求内容验证器的声明 -->
-	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>
-        <!--不设置则默认为classpath下的 ValidationMessages.properties -->
-        <property name="validationMessageSource" ref="validatemessageSource"/>
+    </mvc:annotation-driven>
+    
+    <!-- 全路径 -->
+    <bean id="path" class="com.donnie.core.BasePathExpsoer" init-method="init">
+       <!--<property name="rootPath" value="http://www.tanzhouedu.com/file"></property> -->
     </bean>
-    <!-- 读取 记载了请求内容规范不正确时的提示内容 的资源文件，为什么要要用资源文件：就是是方便统一管理-->
+    
+    <!-- 读取 记载了请求内容规范不正确时的提示内容 的资源文件
+                       为什么要要用资源文件：就是是方便统一管理
+     -->
  	<bean id="validatemessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">  
         <property name="basename" value="classpath:validatemessages"/>  
         <property name="fileEncodings" value="utf-8"/>  
         <property name="cacheSeconds" value="120"/>  
     </bean>
-    
-    
-    <!-- 资源文件的处理 -->
-	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
-   
-    <!-- 扫包(在指定目录下，扫描绑定了Spring注解的类，方法，或成员属性) -->
-	<context:component-scan base-package="com.donnie.web"></context:component-scan>  
 	
 	<!-- 配置拦截器 -->
     <mvc:interceptors> 
@@ -106,11 +103,13 @@
      	</mvc:interceptor> 
     </mvc:interceptors> 
 
-	<!-- 全路径 -->
-    <bean id="path" class="com.donnie.core.BasePathExpsoer" init-method="init">
-       <!--<property name="rootPath" value="http://www.tanzhouedu.com/file"></property> -->
+    <!-- 请求内容验证器的声明 -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>
+        <!--不设置则默认为classpath下的 ValidationMessages.properties -->
+        <property name="validationMessageSource" ref="validatemessageSource"/>
     </bean>
-    
+	    
     <!-- 视图渲染 --> 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       	  <property name="prefix" value="/WEB-INF/pages/"></property>

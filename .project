@@ -35,8 +35,14 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>com.genuitec.eclipse.springframework.springbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>com.genuitec.eclipse.springframework.springnature</nature>
 		<nature>com.genuitec.eclipse.ast.deploy.core.deploymentnature</nature>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
@@ -44,4 +50,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>test/com/donnie/test/Scanner_input.java</name>
+			<type>1</type>
+			<location>E:/JavaSe/第三期 - JavaSE VIP基础班 - Arry老师/33第三十三节：Java基础 - 转换流，打印流 - Arry老师/Scanner_input.java</location>
+		</link>
+	</linkedResources>
 </projectDescription>
