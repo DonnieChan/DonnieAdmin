@@ -11,3 +11,4 @@ WebRoot/WEB-INF/classes
 test/com/donnie/test/Recusion.java
 .project
 .classpath
+.settings
